@@ -3,7 +3,6 @@ C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\Fa
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\MultiFaceRec.AdminPanel.resources
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\MultiFaceRec.FrmPrincipal.resources
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\Diplomnaya.Properties.Resources.resources
-C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\Diplomnaya.WorkList.resources
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\Face Recognition v0.3.csproj.GenerateResource.cache
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\obj\x86\Debug\Face Recognition v0.3.csproj.CoreCompileInputs.cache
 C:\Users\mrevd\OneDrive\Рабочий стол\Face\Diplomnaya\bin\Debug\onnxruntime.dll

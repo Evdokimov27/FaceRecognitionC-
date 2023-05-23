@@ -103,14 +103,8 @@ namespace MultiFaceRec
 						{
 							try
 							{
-
-
-								//Trained face counter
 								ContTrain = ContTrain + 1;
-
-								//Get a gray frame from capture device
 								gray = grabber.QueryGrayFrame().Resize(320, 240, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-
 								//Face Detector
 								MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
 								face,
@@ -118,26 +112,18 @@ namespace MultiFaceRec
 								10,
 								Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
 								new Size(20, 20));
-
-								//Action for each element detected
 								foreach (MCvAvgComp f in facesDetected[0])
 								{
 									TrainedFace = currentFrame.Copy(f.rect).Convert<Gray, byte>();
 									break;
 								}
-
-								//resize face detected image for force to compare the same size with the 
-								//test image with cubic interpolation type method
 								TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 								trainingImages.Add(TrainedFace);
 								labels.Add(namePerson.Text);
-
 								facePerson.Image = TrainedFace;
 
 								MessageBox.Show(namePerson.Text + " добавлен", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 							}
-
-
 							catch
 							{
 								MessageBox.Show("No face detected. Please check your camera or stand closer.", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

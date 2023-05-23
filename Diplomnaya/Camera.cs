@@ -49,7 +49,6 @@ namespace MultiFaceRec
         List<string> NamePersons = new List<string>();
         int ContTrain, NumLabels, t;
         string name, names = null;
-        WorkList list = new WorkList();
 
         Image<Bgr, Byte> ImageFrame;
         Bitmap bpm;
@@ -69,7 +68,6 @@ namespace MultiFaceRec
 
         public FrmPrincipal()
         {
-
             InitializeComponent();
             // путь к модели обнаружения лиц
             face = new HaarCascade("haarcascade_frontalface_default.xml");
@@ -112,9 +110,9 @@ namespace MultiFaceRec
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Обязательно сделать подключение к камере через rtsp
-            //grabber = new Capture("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4");
-            grabber = new Capture(0);
+			//Обязательно сделать подключение к камере через rtsp
+			//grabber = new Capture("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4");
+			grabber = new Capture(0);
             grabber.QueryFrame();
             //Initialize the FrameGraber event
             System.Windows.Forms.Application.Idle += new EventHandler(FrameGrabber);
@@ -133,12 +131,12 @@ namespace MultiFaceRec
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            list.ShowDialog();
-        }
+		private void timer1_Tick(object sender, EventArgs e)
+		{
 
-        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
+		}
+
+		public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
             System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
