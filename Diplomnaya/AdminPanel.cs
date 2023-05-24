@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV.CvEnum;
+using VisioForge.Libs.ZXing;
 
 namespace MultiFaceRec
 {
@@ -30,6 +31,9 @@ namespace MultiFaceRec
 				groupPerson.Items.Add(stat.GetString(0).ToString());
 			}
 			stat.Close();
+
+
+
 			face = new HaarCascade("haarcascade_frontalface_default.xml");
 		}
 
@@ -71,11 +75,13 @@ namespace MultiFaceRec
 			MySqlCommand command = new MySqlCommand(sql, bd.getConnection());
 			command.Parameters.Add("@status", MySqlDbType.VarChar, 45).Value = addGroup.Text;
 			int cmd = command.ExecuteNonQuery();
+			bd.closeConnection();
 		}
 
 
 		private void button2_Click(object sender, EventArgs e)
 		{
+			string id = "";
 			bd.openConnection();
 			if (string.IsNullOrEmpty(namePerson.Text))
 			{
@@ -121,22 +127,35 @@ namespace MultiFaceRec
 								trainingImages.Add(TrainedFace);
 								labels.Add(namePerson.Text);
 								facePerson.Image = TrainedFace;
+								string sql = "INSERT INTO `person` (`id_person`, `fio`, `age`, `gender`, `face_pic`, `recognition_id_recognition`) " +
+											   "VALUES (NULL, @fio, @age, @gender, @picture, @id_rec)";
+								MySqlCommand command = new MySqlCommand(sql, bd.getConnection());
+								command.Parameters.Add("@fio", MySqlDbType.VarChar, 45).Value = namePerson.Text;
+								command.Parameters.Add("@age", MySqlDbType.Int64, 11).Value = agePerson.Text;
+								command.Parameters.Add("@gender", MySqlDbType.VarChar, 10).Value = genderPerson.Text;
+								command.Parameters.Add("@picture", MySqlDbType.MediumBlob).Value = imageToByteArray(TrainedFace.Bitmap);
+								command.Parameters.Add("@id_rec", MySqlDbType.Int64, 11).Value = groupPerson.SelectedIndex;
+								int cmd = command.ExecuteNonQuery();
+								string sql2 = $"SELECT id_person FROM `person`where fio = '{namePerson.Text}'";
+								MySqlCommand command2 = new MySqlCommand(sql2, bd.getConnection());
+								MySqlDataReader reader = command2.ExecuteReader();
+								while (reader.Read())
+								{
+									id = reader[0].ToString();
+								}
+								reader.Close();
 
+								string sql3 = $"INSERT INTO `time_to_work` (`id_time`, `enter_time`, `exit_time`, `id_person`) VALUES (NULL, '{dateTimePicker1.Value.ToShortTimeString()}:00', '{dateTimePicker2.Value.ToShortTimeString()}:00', '{id}')";
+								MySqlCommand command3 = new MySqlCommand(sql3, bd.getConnection());
+								int cmd3 = command3.ExecuteNonQuery();
+								bd.closeConnection();
 								MessageBox.Show(namePerson.Text + " добавлен", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 							}
 							catch
 							{
-								MessageBox.Show("No face detected. Please check your camera or stand closer.", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+								MessageBox.Show("Лицо не обранужено.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 							}
-							string sql = "INSERT INTO `person` (`id_person`, `fio_person`, `age`, `gender`, `face_pic`, `recognition_id_recognition`) " +
-											   "VALUES (NULL, @fio, @age, @gender, @picture, @id_rec)";
-							MySqlCommand command = new MySqlCommand(sql, bd.getConnection());
-							command.Parameters.Add("@fio", MySqlDbType.VarChar, 45).Value = namePerson.Text;
-							command.Parameters.Add("@age", MySqlDbType.Int64, 11).Value = agePerson.Text;
-							command.Parameters.Add("@gender", MySqlDbType.VarChar, 10).Value = genderPerson.Text;
-							command.Parameters.Add("@picture", MySqlDbType.MediumBlob).Value = imageToByteArray(TrainedFace.Bitmap);
-							command.Parameters.Add("@id_rec", MySqlDbType.Int64, 11).Value = groupPerson.SelectedIndex-1;
-							int cmd = command.ExecuteNonQuery();
+							
 						}
 					}
 				}

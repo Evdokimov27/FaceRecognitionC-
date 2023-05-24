@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 using Emgu.CV.Structure;
 
 namespace Emgu.CV
@@ -245,15 +246,17 @@ namespace Emgu.CV
          label = Labels[index];
       }
 
-      /// <summary>
-      /// Try to recognize the image and return its label
-      /// </summary>
-      /// <param name="image">The image to be recognized</param>
-      /// <returns>
-      /// String.Empty, if not recognized;
-      /// Label of the corresponding image, otherwise
-      /// </returns>
-      public String Recognize(Image<Gray, Byte> image)
+
+
+		/// <summary>
+		/// Try to recognize the image and return its label
+		/// </summary>
+		/// <param name="image">The image to be recognized</param>
+		/// <returns>
+		/// String.Empty, if not recognized;
+		/// Label of the corresponding image, otherwise
+		/// </returns>
+		public String Recognize(Image<Gray, Byte> image)
       {
          int index;
          float eigenDistance;
@@ -262,5 +265,7 @@ namespace Emgu.CV
 
          return (_eigenDistanceThreshold <= 0 || eigenDistance < _eigenDistanceThreshold )  ? _labels[index] : String.Empty;
       }
-   }
+
+
+	}
 }

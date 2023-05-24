@@ -33,33 +33,33 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.addGroup = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.groupPerson = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.agePerson = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.genderPerson = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.namePerson = new System.Windows.Forms.TextBox();
 			this.facePerson = new Emgu.CV.UI.ImageBox();
 			this.button2 = new System.Windows.Forms.Button();
+			this.namePerson = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.genderPerson = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.agePerson = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.groupPerson = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.facePerson)).BeginInit();
+			this.panel1.SuspendLayout();
+			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.addGroup);
+			this.groupBox1.Controls.Add(this.panel2);
+			this.groupBox1.Controls.Add(this.panel1);
 			this.groupBox1.Controls.Add(this.button1);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.groupPerson);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.agePerson);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.genderPerson);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.namePerson);
 			this.groupBox1.Controls.Add(this.facePerson);
 			this.groupBox1.Controls.Add(this.button2);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -72,7 +72,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(226, 168);
+			this.label5.Location = new System.Drawing.Point(7, 12);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(88, 13);
 			this.label5.TabIndex = 17;
@@ -80,7 +80,7 @@
 			// 
 			// addGroup
 			// 
-			this.addGroup.Location = new System.Drawing.Point(381, 161);
+			this.addGroup.Location = new System.Drawing.Point(162, 9);
 			this.addGroup.Name = "addGroup";
 			this.addGroup.Size = new System.Drawing.Size(93, 20);
 			this.addGroup.TabIndex = 16;
@@ -88,78 +88,13 @@
 			// button1
 			// 
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(313, 193);
+			this.button1.Location = new System.Drawing.Point(112, 193);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(98, 31);
+			this.button1.Size = new System.Drawing.Size(98, 43);
 			this.button1.TabIndex = 15;
 			this.button1.Text = "2. Добавить права";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(226, 101);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(88, 13);
-			this.label4.TabIndex = 14;
-			this.label4.Text = "Группа доступа:";
-			// 
-			// groupPerson
-			// 
-			this.groupPerson.FormattingEnabled = true;
-			this.groupPerson.Location = new System.Drawing.Point(320, 97);
-			this.groupPerson.Name = "groupPerson";
-			this.groupPerson.Size = new System.Drawing.Size(154, 21);
-			this.groupPerson.TabIndex = 13;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(226, 74);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(55, 13);
-			this.label3.TabIndex = 12;
-			this.label3.Text = "Возраст: ";
-			// 
-			// agePerson
-			// 
-			this.agePerson.Location = new System.Drawing.Point(410, 71);
-			this.agePerson.Name = "agePerson";
-			this.agePerson.Size = new System.Drawing.Size(64, 20);
-			this.agePerson.TabIndex = 11;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(226, 48);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(33, 13);
-			this.label2.TabIndex = 10;
-			this.label2.Text = "Пол: ";
-			// 
-			// genderPerson
-			// 
-			this.genderPerson.Location = new System.Drawing.Point(390, 45);
-			this.genderPerson.Name = "genderPerson";
-			this.genderPerson.Size = new System.Drawing.Size(84, 20);
-			this.genderPerson.TabIndex = 9;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(226, 22);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(35, 13);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "Имя: ";
-			// 
-			// namePerson
-			// 
-			this.namePerson.Location = new System.Drawing.Point(313, 22);
-			this.namePerson.Name = "namePerson";
-			this.namePerson.Size = new System.Drawing.Size(161, 20);
-			this.namePerson.TabIndex = 7;
 			// 
 			// facePerson
 			// 
@@ -176,11 +111,138 @@
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(8, 193);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(98, 31);
+			this.button2.Size = new System.Drawing.Size(98, 43);
 			this.button2.TabIndex = 3;
 			this.button2.Text = "1. Добавить пользоватля";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// namePerson
+			// 
+			this.namePerson.Location = new System.Drawing.Point(94, 5);
+			this.namePerson.Name = "namePerson";
+			this.namePerson.Size = new System.Drawing.Size(161, 20);
+			this.namePerson.TabIndex = 7;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(7, 5);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(35, 13);
+			this.label1.TabIndex = 8;
+			this.label1.Text = "Имя: ";
+			// 
+			// genderPerson
+			// 
+			this.genderPerson.Location = new System.Drawing.Point(171, 28);
+			this.genderPerson.Name = "genderPerson";
+			this.genderPerson.Size = new System.Drawing.Size(84, 20);
+			this.genderPerson.TabIndex = 9;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(7, 31);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(33, 13);
+			this.label2.TabIndex = 10;
+			this.label2.Text = "Пол: ";
+			// 
+			// agePerson
+			// 
+			this.agePerson.Location = new System.Drawing.Point(191, 54);
+			this.agePerson.Name = "agePerson";
+			this.agePerson.Size = new System.Drawing.Size(64, 20);
+			this.agePerson.TabIndex = 11;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(7, 57);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(55, 13);
+			this.label3.TabIndex = 12;
+			this.label3.Text = "Возраст: ";
+			// 
+			// groupPerson
+			// 
+			this.groupPerson.FormattingEnabled = true;
+			this.groupPerson.Location = new System.Drawing.Point(101, 80);
+			this.groupPerson.Name = "groupPerson";
+			this.groupPerson.Size = new System.Drawing.Size(154, 21);
+			this.groupPerson.TabIndex = 13;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(7, 84);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(88, 13);
+			this.label4.TabIndex = 14;
+			this.label4.Text = "Группа доступа:";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(7, 113);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(87, 13);
+			this.label6.TabIndex = 18;
+			this.label6.Text = "Время прихода:";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(7, 139);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(74, 13);
+			this.label7.TabIndex = 19;
+			this.label7.Text = "Время ухода:";
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.dateTimePicker2);
+			this.panel1.Controls.Add(this.dateTimePicker1);
+			this.panel1.Controls.Add(this.label7);
+			this.panel1.Controls.Add(this.label6);
+			this.panel1.Controls.Add(this.label4);
+			this.panel1.Controls.Add(this.groupPerson);
+			this.panel1.Controls.Add(this.label3);
+			this.panel1.Controls.Add(this.agePerson);
+			this.panel1.Controls.Add(this.label2);
+			this.panel1.Controls.Add(this.genderPerson);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.namePerson);
+			this.panel1.Location = new System.Drawing.Point(219, 17);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(268, 160);
+			this.panel1.TabIndex = 0;
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.label5);
+			this.panel2.Controls.Add(this.addGroup);
+			this.panel2.Location = new System.Drawing.Point(219, 193);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(268, 43);
+			this.panel2.TabIndex = 18;
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dateTimePicker2.Location = new System.Drawing.Point(162, 132);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(89, 20);
+			this.dateTimePicker2.TabIndex = 21;
+			// 
+			// dateTimePicker1
+			// 
+			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dateTimePicker1.Location = new System.Drawing.Point(162, 107);
+			this.dateTimePicker1.Name = "dateTimePicker1";
+			this.dateTimePicker1.Size = new System.Drawing.Size(89, 20);
+			this.dateTimePicker1.TabIndex = 20;
 			// 
 			// AdminPanel
 			// 
@@ -192,8 +254,11 @@
 			this.Text = "Admin Panel";
 			this.Load += new System.EventHandler(this.AdminPanel_Load);
 			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.facePerson)).EndInit();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -204,6 +269,12 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox addGroup;
 		private System.Windows.Forms.Button button1;
+		private Emgu.CV.UI.ImageBox facePerson;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox groupPerson;
 		private System.Windows.Forms.Label label3;
@@ -212,7 +283,7 @@
 		private System.Windows.Forms.TextBox genderPerson;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox namePerson;
-		private Emgu.CV.UI.ImageBox facePerson;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker dateTimePicker1;
 	}
 }
