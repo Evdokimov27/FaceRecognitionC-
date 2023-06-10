@@ -12,6 +12,7 @@ using Accord.Video.FFMPEG;
 using Microsoft.Office.Interop.Excel;
 using System.Data;
 using VisioForge.Libs.MediaFoundation.OPM;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MultiFaceRec
 {
@@ -39,12 +40,10 @@ namespace MultiFaceRec
 
 
         List<String> person = new List<String>();
-
-
-        public Camera()
+		public Camera()
         {
 			InitializeComponent();
-            LoadVideo();
+			LoadVideo();
             axWindowsMediaPlayer1.Visible = false;
             // путь к модели обнаружения лиц
             face = new HaarCascade("haarcascade_frontalface_default.xml");
@@ -78,8 +77,8 @@ namespace MultiFaceRec
         {
             axWindowsMediaPlayer1.Visible = false;
             //Обязательно сделать подключение к камере через rtsp
-            grabber = new Capture(0);
-            grabber.QueryFrame();
+            grabber = new Capture("rtsp://192.168.1.3:8554/");
+			grabber.QueryFrame();
             System.Windows.Forms.Application.Idle += new EventHandler(FrameGrabber);
 
             button1.Enabled = false;

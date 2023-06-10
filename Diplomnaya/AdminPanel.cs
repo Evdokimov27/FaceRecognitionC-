@@ -74,7 +74,7 @@ namespace MultiFaceRec
 			}
 			else
 			{
-				if (string.IsNullOrEmpty(genderPerson.Text))
+				if (string.IsNullOrEmpty(comboBox1.Text))
 				{
 					MessageBox.Show("Пол не введен");
 				}
@@ -112,7 +112,7 @@ namespace MultiFaceRec
 									labels.Add(namePerson.Text);
 									facePerson.Image = TrainedFace;
 
-									string sql = $"INSERT INTO `person` (`id_person`, `fio`, `age`, `gender`, `face_pic`, `recognition_id_recognition`) VALUES (NULL, '{namePerson.Text}', {Convert.ToInt32(agePerson.Text)}, '{genderPerson.Text}', @img, '{groupPerson.SelectedIndex}')";
+									string sql = $"INSERT INTO `person` (`id_person`, `fio`, `age`, `gender`, `face_pic`, `recognition_id_recognition`) VALUES (NULL, '{namePerson.Text}', {Convert.ToInt32(agePerson.Text)}, '{comboBox1.Text}', @img, '{groupPerson.SelectedIndex}')";
 									MySqlParameter param = new MySqlParameter("@img", MySqlDbType.MediumBlob);
 									param.Value = imageToByteArray(TrainedFace.Bitmap);
 									int cmd = bd.NonExecuteSqlOverSSH(sql, param);
