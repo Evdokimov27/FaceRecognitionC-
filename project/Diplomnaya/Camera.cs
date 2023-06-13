@@ -13,6 +13,7 @@ using Microsoft.Office.Interop.Excel;
 using System.Data;
 using VisioForge.Libs.MediaFoundation.OPM;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Linq;
 
 namespace MultiFaceRec
 {
@@ -35,13 +36,14 @@ namespace MultiFaceRec
         List<string> fio_time = new List<string>();
         List<bool> pers_warning = new List<bool>();
         bd bd = new bd();
-		string host = "192.168.1.3";
+		string host = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName.Split('\\').Last().Remove(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName.Split('\\').Last().Length - 4);
 		String perms = null;
 
 
         List<String> person = new List<String>();
 		public Camera()
         {
+            MessageBox.Show(host);
 			InitializeComponent();
 			LoadVideo();
             axWindowsMediaPlayer1.Visible = false;
@@ -77,7 +79,7 @@ namespace MultiFaceRec
         {
             axWindowsMediaPlayer1.Visible = false;
             //Обязательно сделать подключение к камере через rtsp
-            grabber = new Capture("rtsp://192.168.1.3:8554/");
+            grabber = new Capture($"rtsp://{host}:8554/");
 			grabber.QueryFrame();
             System.Windows.Forms.Application.Idle += new EventHandler(FrameGrabber);
 

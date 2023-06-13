@@ -14,9 +14,11 @@ namespace MultiFaceRec
 {
 	internal class bd
 	{
-		MySqlConnection connection = new MySqlConnection("server=192.168.1.3;port=80;username=root;password=root;database=camera;");
+		static string host = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName.Split('\\').Last().Remove(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName.Split('\\').Last().Length - 4);
+
+		MySqlConnection connection = new MySqlConnection($"server={host};port=80;username=root;password=root;database=camera;");
 		//MySqlConnection connection = new MySqlConnection("server=localhost;userid=root;password=;database=mydb");
-		private static SshClient client = new SshClient("192.168.1.3", "pi", "root");
+		private static SshClient client = new SshClient(host, "pi", "root");
 		private static MySqlConnectionStringBuilder connBuilderIMSoverSSH = new MySqlConnectionStringBuilder();
 		public void openConnection()
 		{
