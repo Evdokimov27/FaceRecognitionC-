@@ -14,6 +14,7 @@ using System.Data;
 using VisioForge.Libs.MediaFoundation.OPM;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Linq;
+using Emgu.CV.UI;
 
 namespace MultiFaceRec
 {
@@ -78,8 +79,8 @@ namespace MultiFaceRec
         private void button1_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Visible = false;
-            //Обязательно сделать подключение к камере через rtsp
-            grabber = new Capture($"rtsp://{host}:8554/");
+			//Обязательно сделать подключение к камере через rtsp
+			grabber = new Capture(0);
 			grabber.QueryFrame();
             System.Windows.Forms.Application.Idle += new EventHandler(FrameGrabber);
 
@@ -350,8 +351,6 @@ namespace MultiFaceRec
                 if (DateTime.Now > Convert.ToDateTime(time_to_enter[i]) && pers_warning[i] != true)
                 {
                     pers_warning[i] = true;
-                    MessageBox.Show("Зафиксирована неявка: " + fio_time[i] + ". Рабочее время с: " + time_to_enter[i] + " до " + time_to_exit[i]);
-
 				}
             }
         }
@@ -377,7 +376,19 @@ namespace MultiFaceRec
             }
         }
 
-        void FrameGrabber(object sender, EventArgs e)
+		private void checkBox2_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBox2.Checked)
+            {
+				grabber = new Capture($"rtsp://{host}:8554/");
+			}
+			else
+            {
+                grabber = new Capture(0);
+            }
+		}
+
+		public void FrameGrabber(object sender, EventArgs e)
         {
             currentFrame = grabber.QueryFrame().Resize(imageBoxFrameGrabber.Width, imageBoxFrameGrabber.Height, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 			var time_img = currentFrame.Bitmap;
@@ -417,7 +428,7 @@ namespace MultiFaceRec
                         Face = currentFrame.Copy(fc.rect).Convert<Rgb, byte>();
                         break;
                     }
-                    TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                    TrainedFace = result;
                     var b = currentFrame.Bitmap;
                     Graphics g = Graphics.FromImage(b);
                     System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 8);
@@ -425,10 +436,10 @@ namespace MultiFaceRec
                     PointF drawPoint = new PointF(f.rect.X - 2, f.rect.Y - 15);
                     g.DrawString(name, drawFont, drawBrush, drawPoint);
                     currentFrame.Bitmap = b;
-                }
-                if ("Неизвестный" != name)
+				}
+				if ("Неизвестный" != name)
                 {
-                    if (name != "")
+                    if (name != null)
                     {
                         string Warning = "";
                         string sql = "SELECT fio FROM `person` where fio LIKE '" + name + "' GROUP BY fio";
@@ -478,15 +489,16 @@ namespace MultiFaceRec
                         }
                     }
                 }
-
-
+			}
+            if (result != null)
+            {
+                imageBox1.Height = result.Height;
+                imageBox1.Width = result.Width;
+                imageBox1.Image = result;
             }
-
-            imageBox1.Image = TrainedFace;
-            TrainedFace = null;
             imageBoxFrameGrabber.Image = currentFrame;
         }
-        //  Детект объектов (ебейшая нагрузка, желательно найти альтернативу или убрать)
+        //  Детект объектов (нагрузка, желательно найти альтернативу или убрать)
         //  private async void Detect()
         //  {
         //      using var image = System.Drawing.Image.FromStream(s);
@@ -526,8 +538,9 @@ namespace MultiFaceRec
 
 
         private void button3_Click_1(object sender, EventArgs e)
-        {
-            if (imageBox1.Image != null)
+		{
+
+			if (imageBox1.Image != null)
             {
                 string name_pers = name;
                 string sql_name = "SELECT fio, recognition.status FROM person, recognition WHERE (fio = '" + name_pers + "')" +
@@ -540,11 +553,10 @@ namespace MultiFaceRec
                 {
                     if ("Администратор" == perms)
                     {
-                        MessageBox.Show(perms);
-                        AdminPanel admins = new AdminPanel();
-                        admins.ShowDialog();
-           
-                    }
+						MessageBox.Show(perms);
+						AdminPanel admins = new AdminPanel();
+						admins.ShowDialog();
+					}
                     else
                     {
                         MessageBox.Show("Недостаточно прав");

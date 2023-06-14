@@ -14,6 +14,7 @@ using System.Linq;
 using Google.Protobuf.WellKnownTypes;
 using System.Data.SqlClient;
 using Gst;
+using Microsoft.Office.Interop.Excel;
 
 namespace MultiFaceRec
 {
@@ -63,6 +64,10 @@ namespace MultiFaceRec
 			string sql = "INSERT INTO `recognition` (`id_recognition`, `status`) " +
 											   "VALUES (NULL, @status)";
 			bd.NonExecuteSqlOverSSH(sql, null);
+		}
+
+		private void AdminPanel_FormClosed(object sender, FormClosedEventArgs e)
+		{ 
 		}
 
 		private void button2_Click(object sender, EventArgs e)

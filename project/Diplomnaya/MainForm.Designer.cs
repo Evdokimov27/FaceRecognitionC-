@@ -39,20 +39,21 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.button4 = new System.Windows.Forms.Button();
+			this.button6 = new System.Windows.Forms.Button();
+			this.button5 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.button5 = new System.Windows.Forms.Button();
-			this.button6 = new System.Windows.Forms.Button();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
 			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
@@ -92,7 +93,7 @@
 			// button2
 			// 
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(196, 246);
+			this.button2.Location = new System.Drawing.Point(182, 246);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(98, 31);
 			this.button2.TabIndex = 3;
@@ -103,9 +104,9 @@
 			// imageBox1
 			// 
 			this.imageBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.imageBox1.Location = new System.Drawing.Point(73, 19);
+			this.imageBox1.Location = new System.Drawing.Point(69, 19);
 			this.imageBox1.Name = "imageBox1";
-			this.imageBox1.Size = new System.Drawing.Size(210, 157);
+			this.imageBox1.Size = new System.Drawing.Size(200, 150);
 			this.imageBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.imageBox1.TabIndex = 5;
 			this.imageBox1.TabStop = false;
@@ -139,6 +140,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.checkBox2);
 			this.groupBox1.Controls.Add(this.checkBox1);
 			this.groupBox1.Controls.Add(this.comboBox1);
 			this.groupBox1.Controls.Add(this.label3);
@@ -159,16 +161,35 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Управление";
 			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(182, 283);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(112, 17);
+			this.checkBox2.TabIndex = 16;
+			this.checkBox2.Text = "Внешняя камера";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+			// 
 			// checkBox1
 			// 
 			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(128, 283);
+			this.checkBox1.Location = new System.Drawing.Point(55, 283);
 			this.checkBox1.Name = "checkBox1";
 			this.checkBox1.Size = new System.Drawing.Size(95, 17);
 			this.checkBox1.TabIndex = 15;
 			this.checkBox1.Text = "Вести запись";
 			this.checkBox1.UseVisualStyleBackColor = true;
 			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(150, 385);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(163, 21);
+			this.comboBox1.TabIndex = 14;
 			// 
 			// label3
 			// 
@@ -195,6 +216,26 @@
 			this.button4.Text = "4. Сформировать отчет";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
+			// button6
+			// 
+			this.button6.Location = new System.Drawing.Point(17, 342);
+			this.button6.Name = "button6";
+			this.button6.Size = new System.Drawing.Size(296, 28);
+			this.button6.TabIndex = 13;
+			this.button6.Text = "5. Сохранить видео";
+			this.button6.UseVisualStyleBackColor = true;
+			this.button6.Click += new System.EventHandler(this.button6_Click);
+			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(17, 376);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(127, 37);
+			this.button5.TabIndex = 12;
+			this.button5.Text = "6. Открыть видео";
+			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.button5_Click);
 			// 
 			// dataGridView1
 			// 
@@ -253,38 +294,10 @@
 			this.Column5.ReadOnly = true;
 			this.Column5.Width = 88;
 			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(17, 376);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(127, 37);
-			this.button5.TabIndex = 12;
-			this.button5.Text = "6. Открыть видео";
-			this.button5.UseVisualStyleBackColor = true;
-			this.button5.Click += new System.EventHandler(this.button5_Click);
-			// 
-			// button6
-			// 
-			this.button6.Location = new System.Drawing.Point(17, 342);
-			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(296, 28);
-			this.button6.TabIndex = 13;
-			this.button6.Text = "5. Сохранить видео";
-			this.button6.UseVisualStyleBackColor = true;
-			this.button6.Click += new System.EventHandler(this.button6_Click);
-			// 
 			// timer1
 			// 
 			this.timer1.Interval = 1;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(150, 385);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(163, 21);
-			this.comboBox1.TabIndex = 14;
 			// 
 			// axWindowsMediaPlayer1
 			// 
@@ -301,7 +314,7 @@
 			this.timer2.Interval = 1000;
 			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
-			// FrmPrincipal
+			// Camera
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -311,7 +324,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.imageBoxFrameGrabber);
-			this.Name = "FrmPrincipal";
+			this.Name = "Camera";
 			this.Text = "Camera Input & Face Detection";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPrincipal_FormClosed);
 			((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
@@ -351,6 +364,7 @@
 		private System.Windows.Forms.DataGridViewImageColumn Column3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
 		private System.Windows.Forms.Timer timer2;
+		private System.Windows.Forms.CheckBox checkBox2;
 	}
 }
 

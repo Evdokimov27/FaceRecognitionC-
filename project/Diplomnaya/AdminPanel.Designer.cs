@@ -34,6 +34,7 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.addGroup = new System.Windows.Forms.TextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label7 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.facePerson = new Emgu.CV.UI.ImageBox();
 			this.button2 = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -112,6 +112,17 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(268, 160);
 			this.panel1.TabIndex = 0;
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Items.AddRange(new object[] {
+            "Мужской",
+            "Женский"});
+			this.comboBox1.Location = new System.Drawing.Point(134, 28);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(121, 21);
+			this.comboBox1.TabIndex = 22;
 			// 
 			// dateTimePicker2
 			// 
@@ -221,7 +232,7 @@
 			this.facePerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.facePerson.Location = new System.Drawing.Point(8, 19);
 			this.facePerson.Name = "facePerson";
-			this.facePerson.Size = new System.Drawing.Size(210, 157);
+			this.facePerson.Size = new System.Drawing.Size(200, 150);
 			this.facePerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.facePerson.TabIndex = 5;
 			this.facePerson.TabStop = false;
@@ -237,17 +248,6 @@
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// comboBox1
-			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
-            "Мужской",
-            "Женский"});
-			this.comboBox1.Location = new System.Drawing.Point(134, 28);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 21);
-			this.comboBox1.TabIndex = 22;
-			// 
 			// AdminPanel
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +256,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "AdminPanel";
 			this.Text = "Admin Panel";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminPanel_FormClosed);
 			this.Load += new System.EventHandler(this.AdminPanel_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
